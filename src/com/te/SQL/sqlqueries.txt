@@ -1,0 +1,133 @@
+
+                                                         Queries
+
+1.show databases;
+
+2.create database technoelevate;
+
+3.use technoelevate;
+
+4.show tables;
+
+5.create table interns (
+    -> name varchar(50) not null,
+    -> id int primary key check(id>0),
+    -> dob date,
+    -> gender varchar(1) not null,
+    -> role varchar(25) not null,
+    -> mobile bigint unique not null check(mobile>0),
+    -> salary double check(salary>=0)
+    -> );
+
+6.desc interns;
+
+7.describe interns;
+
+8.insert into interns(id,name,gender,dob,role,salary,mobile)
+    -> values(10,'Muthu','M','1997-09-12','Developer',25000.50,9871287571);
+
+9.insert into interns values('Ram',20,'1998-11-18','M','Architect',9871238782,77000.50);
+
+10.insert into interns values('Naveen A',30,'1994-10-08','M','Developer',9865734529,37000.50),('Naveen S',40,'1999-10-17','M','Developer',7101975622,37000.50)('Kishore Kumar R',60,'1998-04-06','M','Developer',7010975622,25000.50);
+
+11.select * from interns;
+
+12.select name,gender from interns;
+
+13.select mobile from interns;
+
+14.select id,role from interns;
+
+15.select dob,name from interns;
+
+16.alter table School
+    -> add mobile bigint unique not null check(mobile>0);
+
+17.alter table School
+    -> drop column Bg;
+
+18.alter table School modify DOB date not null;
+
+19.alter table School change DOB Student_DOB date;
+
+20.rename table School to info;
+
+21.truncate table info;
+
+22.drop table info;
+
+23.drop database dummy;
+
+24.select * from interns where id in(10,20,30);
+
+25.select * from interns where id not in (40,30,50);
+
+26.select * from interns where dob between '1990-01-01' and '1996-12-31';
+
+27.select * from interns where dob not between '1990-01-01' and '1996-12-31';
+
+28.select * from interns where dob is null;
+
+29. select * from interns where salary is null;
+
+30.select * from interns where role not in ('Architect');
+
+31.select * from interns where name like 'a%';
+
+32.select * from interns where name like '%s';
+
+33.select * from interns where '___';
+
+34.select * from interns where name like '%a%a%';
+
+35.select * from interns where name like 'n%a';
+
+36.delete from interns where blood_group = 'A1+';
+
+37.update interns set email = 'kumar@gmail.com' where name = 'Kumar';
+
+38.select distinct salary from interns;
+
+39.select distinct gender,deptId from interns;
+
+40.select distinct role,deptId from interns;
+
+41.select max(salary) from interns;
+
+42.select min(salary) from interns;
+
+43.select max(salary) as "Maximum Salary" from interns;
+
+44.select min(salary) as "Minimum Salary" from interns;
+
+45.select avg(salary) as "Average Salary" from interns;
+
+46.select count(salary) as "Total Number" from interns;
+
+47.select sum(salary) as "Total salaray" from interns;
+
+48.select deptId,max(salary) as "Maximum Salary" from interns group by deptId;
+
+49.select role,min(salary) as "Minimum Salary" from interns group by role;
+
+50. select * from interns where deptId in (select deptId from department);
+
+51.select * from interns order by salary desc limit 3;
+
+52.select * from interns cross join department;
+
+53.select * from interns inner join department on interns.deptId = department.deptId;
+
+54.select name,id,location from interns inner join department on interns.deptId = department.deptId;
+
+55.select name,id,location from interns left join department on interns.deptId = department.deptId;
+
+56.select name,id,location from interns right join department on interns.deptId = department.deptId;
+
+57.select email,mobile,location from interns right join department on interns.deptId = department.deptId;
+
+58.select * from interns natural join department;
+
+59.select * from interns join department;
+
+60.select * from interns natural join department;
